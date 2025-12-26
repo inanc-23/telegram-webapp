@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Casibom | Para Yatırma</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      background: #0f172a;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .box {
+      background: #020617;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      background: linear-gradient(90deg,#22c55e,#16a34a);
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>💸 Para Yatırma</h2>
+  <p>Lütfen yatırım tutarını seçin.</p>
+
+  <button onclick="sendData('1000')">1000 TL</button>
+  <button onclick="sendData('2500')">2500 TL</button>
+  <button onclick="sendData('5000')">5000 TL</button>
+</div>
+
+<script>
+  const tg = window.Telegram.WebApp;
+  tg.expand();
+
+  function sendData(amount) {
+    tg.sendData(JSON.stringify({
+      action: "deposit",
+      amount: amount
+    }));
+    tg.close();
+  }
+</script>
+
+</body>
+</html>
